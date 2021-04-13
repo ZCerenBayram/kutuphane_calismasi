@@ -1,0 +1,55 @@
+
+CREATE DATABASE kutuphane WITH OWNER postgres TEMPLATE template0 ENCODING 'UTF-8';
+
+CREATE TABLE users	 (
+  username VarChar(30) PRIMARY KEY,
+  name VarChar(30) Not Null,
+  surname VarChar(30) Not Null,
+  Email VarChar(100) Not Null,
+  Pwd VarChar(200) Not Null
+
+);
+
+INSERT INTO
+  users (username, name,surname, Email,Pwd)
+Values
+  ('Zeynep','Zeynep', 'Ceren', 'zeynep@gmail.com','123'),
+  ('Ayse','Ayse', 'Bayram', 'ayse@gmail.com','123');
+
+
+
+
+CREATE TABLE books	 (
+  isbn VarChar(13) PRIMARY KEY,
+  name VarChar(30) Not Null,
+  writer VarChar(30) Not Null,
+  category VarChar(100) Not Null
+
+
+);
+
+INSERT INTO
+  books (isbn, name,writer, category)
+Values
+  ('1111111111111','Nutuk', 'Atatürk', 'Tarih'),
+  ('2222222222222','Suç ve Ceza', 'Dostoyevski', 'Roman');
+
+
+
+
+CREATE TABLE borrow_books	 (
+  id SERIAL PRIMARY KEY,
+  username VarChar(30) Not Null,
+  isbn VarChar(30) Not Null
+
+
+);
+
+
+
+INSERT INTO
+  borrow_books (username,isbn)
+Values
+  ('Zeynep','1111111111111'),
+  ('Ayse','2222222222222');
+
